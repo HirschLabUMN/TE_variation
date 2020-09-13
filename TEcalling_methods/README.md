@@ -18,4 +18,4 @@ TE presence/absence calls in B73, Mo17, PH207 and W22 obtained from Sarah Anders
 
 Gene expression and TE expression data also obtained from Sarah Anderson. Dataset is described in this paper: https://www.g3journal.org/content/9/11/3673.long
 
-TE_analysis folder has scripts used to analyze TE precense/absence calls. 
+AnalyzingTE_calls folder has scripts used to analyze TE precense/absence calls. 
