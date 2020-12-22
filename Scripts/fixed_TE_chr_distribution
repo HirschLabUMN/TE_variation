@@ -1,0 +1,53 @@
+# ALL LTR SCALE 
+awk '{if ($11 == "LTR" && $17 == "low_ambig" && $18 != "NA"){ print }}' File_S5_final.txt > all_LTR_low_ambig_age.txt
+# 149908
+
+
+# get TE ID to grep TE model   
+
+# 149908
+cut -f 1 all_LTR_low_ambig_age.txt > all_TE_age_id.txt
+grep -Fwf all_TE_age_id.txt ~/TE_paper/TE_syntenic_info/non-redundant_TEs_4genomes_1Feb19.txt > all_LTR_position_info.txt
+
+# get B73 coordinates only and remove the rest 
+
+cut -f 1,4 all_LTR_position_info.txt | grep -v "NA" > all_LTR_B73_position.txt
+cut -f 1 all_LTR_B73_position.txt > B73_LTR_TE_id.txt
+cut -f 1,4 all_LTR_position_info.txt | grep -v "NA" | wc -l 
+# 94454 are based on B73
+
+# python script to parse out this information to a gff file to intersect with the bed file 
+
+B73_LTR_gff_convert = []
+with open("/Users/yinjieqiu/Desktop/TE_chromsome_distribution/all_LTR_B73_position.txt") as B73_LTR:
+    for B73_TE_line in B73_LTR:
+        # Split each line.
+        B73_TE_line = B73_TE_line.strip().split()
+        if B73_TE_line[1] != "NA":
+            TE_Id = B73_TE_line[0]
+            chr_info = B73_TE_line[1].split(":")[0]
+            starting_pos = B73_TE_line[1].split(":")[1].split("-")[0]
+            ending_pos = B73_TE_line[1].split(":")[1].split("-")[1]
+            gff = chr_info + '\t' + "B73_LTR" + '\t' + "TE"  + '\t' + str(starting_pos) + '\t' + str(ending_pos) + '\t' + "." + '\t' + "." + '\t' + "." + '\t' + str(TE_Id)
+            B73_LTR_gff_convert.append(str(gff))
+            
+with open('/Users/yinjieqiu/Desktop/TE_chromsome_distribution/B73_LTR_gff_convert.txt', 'w') as f:
+    for lines in B73_LTR_gff_convert:
+        f.write("%s\n" % lines)
+
+# intersect LTRs that are in the centromere regions: 
+
+#intersectBed -a nature_B73_cent_v4.txt -b B73_LTR_gff_convert.txt -wa -wb > intersect_LTR_gff_bed.txt
+intersectBed -a peri_centromere_v2_v4.bed -b B73_LTR_gff_convert.txt -wa -wb > intersect_LTR_gff_bed.txt
+# there is a total of 45617 of the gff that are intersect with the bed file 
+
+# getting the name of the elements that are in the centromere, this will be used for left join to the final matrix 
+cut -f 12 intersect_LTR_gff_bed.txt > pericentromeric_TE_id.txt
+cut -f 12 intersect_LTR_gff_bed.txt | sed 's/$/,pericentromeric/'  > TE_elements_in_centromere.txt
+
+# the rest TEs that are on chr arm is labeled as arm (48837)
+grep -Fvxf pericentromeric_TE_id.txt B73_LTR_TE_id.txt | sed 's/$/,arm/'  > TE_elements_in_arm.txt
+
+# joining to dataset together 
+cat TE_elements_in_arm.txt TE_elements_in_centromere.txt > B73_LTR_chr_region_info.txt 
+
