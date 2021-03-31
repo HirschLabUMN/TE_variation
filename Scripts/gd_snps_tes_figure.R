@@ -7,7 +7,7 @@ getwd()
 setwd("/Users/jonathanrenk/Desktop/")
 
 ## Loading in the data
-data <- read.table("te_dist.txt", header=F, sep = "\t")
+data <- read.table("te_dist_v3.txt", header=F, sep = "\t")
 str(data)
 ## Removing taxa name column
 data <- data[,c(-1)]
@@ -19,7 +19,7 @@ data <- cbind(which(!is.na(data), arr.ind = TRUE), na.omit(as.vector(data))) # g
 data <- as.data.frame(data)
 
 ## Loading in the data
-data2 <- read.table("snp_dist.txt", header=F, sep = "\t")
+data2 <- read.table("snp_dist_3.txt", header=F, sep = "\t")
 str(data2)
 ## Removing taxa name column
 data2 <- data2[,c(-1)]
