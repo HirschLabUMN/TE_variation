@@ -1,4 +1,5 @@
 # LD between SNPs and TEs
+(by Rafael Della Coletta)
 
 Path to the files:
 
