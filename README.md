@@ -1,6 +1,6 @@
 # This study used random forest machine learning models and 509 whole genome resequencing data to predict the presence/absence of a known TE in a diverse maize panel. 
 
-TEidentification folder has scripts used to generate commands to run bedtools multicov in Mo17, PH207 and W22 reads aligned to B73 over gff files that have the coordinates of different bp lengths around the start and end of every TE in the B73 genome. 
+TE_calling_random_forest_build_matrix folder has scripts used to generate commands to run bedtools multicov in Mo17, PH207 and W22 reads aligned to B73 over gff files that have the coordinates of different bp lengths around the start and end of every TE in the B73 genome. 
 
 TE annotation gff3 files obtained here: https://mcstitzer.github.io/maize_TEs/ The full length gff3 files were used. 
 
