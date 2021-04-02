@@ -1,0 +1,113 @@
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=30gb
+#SBATCH -t 12:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=qiuxx221@umn.edu
+#SBATCH -o bam_subsample_10x30x.out
+#SBATCH -e bam_subsample_10x30x.err
+
+cd /scratch.global/qiuxx221/widi_bam_self
+
+export PATH="/home/hirschc1/qiuxx221/anaconda2/bin/:$PATH"
+
+source ~/anaconda2/etc/profile.d/conda.sh
+conda activate Widiv_SV_py3
+
+############# Four ref self mapping 
+## 15x 
+sambamba view -h -t 4 -s 0.3927585792 -f bam --subsampling-seed=21 Mo17_Mo17_map.q20.bam -o subsampled_Mo17_Mo17_15x.bam
+sambamba view -h -t 4 -s 0.3482993703 -f bam --subsampling-seed=21 PH207_PH207_map.q20.bam -o subsampled_PH207_PH207_15x.bam
+sambamba view -h -t 4 -s 0.8283219853 -f bam --subsampling-seed=21 W22_W22v12_map.q20.bam -o subsampled_W22_W22_15x.bam
+
+## 30x 
+sambamba view -h -t 4 -s 0.7855171583 -f bam --subsampling-seed=21 Mo17_Mo17_map.q20.bam -o subsampled_Mo17_Mo17_30x.bam
+sambamba view -h -t 4 -s 0.6965987405 -f bam --subsampling-seed=21 PH207_PH207_map.q20.bam -o subsampled_PH207_PH207_30x.bam
+
+## 10x 
+sambamba view -h -t 4 -s 0.7154406399 -f bam --subsampling-seed=21 B73_B73v4_map.q20.bam -o subsampled_B73_B73_10x.bam
+sambamba view -h -t 4 -s 0.2321995802 -f bam --subsampling-seed=21 PH207_PH207_map.q20.bam -o subsampled_PH207_PH207_10x.bam
+sambamba view -h -t 4 -s 0.2618390528 -f bam --subsampling-seed=21 Mo17_Mo17_map.q20.bam -o subsampled_Mo17_Mo17_10x.bam
+sambamba view -h -t 4 -s 0.5522146569 -f bam --subsampling-seed=21 W22_W22v12_map.q20.bam -o subsampled_W22_W22_10x.bam
+
+
+
+
+
+
+###################cmds below were saved as subsampling_cmd_21.txt to run parallel 
+
+/scratch.global/qiuxx221/widi_bam_self/bams_compare
+
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=80gb
+#SBATCH -t 24:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=qiuxx221@umn.edu
+#SBATCH -o subsample_21.out
+#SBATCH -e subsample_21.err
+
+cd /scratch.global/qiuxx221/widi_bam_self/bams_compare
+
+export PATH="/home/hirschc1/qiuxx221/anaconda2/bin/:$PATH"
+source ~/anaconda2/etc/profile.d/conda.sh
+conda activate Widiv_SV_py3
+module load parallel
+
+parallel --tmpdir /scratch.global/qiuxx221/widi_bam_self/bams_compare/temp/ --compress -j 8 < subsampling_cmd_21.txt 
+
+######## Mo17 
+# B73 
+sambamba view -h -t 4 -s 0.9659315927 -f bam --subsampling-seed=21 B73_Mo17_map.q20.bam -o subsampled_B73_Mo17_10x.bam
+# PH207
+sambamba view -h -t 4 -s 0.4567836946 -f bam --subsampling-seed=21 PH207_Mo17_map.q20.bam -o subsampled_PH207_Mo17_15x.bam
+sambamba view -h -t 4 -s 0.9135673893 -f bam --subsampling-seed=21 PH207_Mo17_map.q20.bam -o subsampled_PH207_Mo17_30x.bam
+sambamba view -h -t 4 -s 0.3045224631 -f bam --subsampling-seed=21 PH207_Mo17_map.q20.bam -o subsampled_PH207_Mo17_10x.bam
+# W22 
+sambamba view -h -t 4 -s 0.7305669199 -f bam --subsampling-seed=21 W22_Mo17_map.q20.bam -o subsampled_W22_Mo17_10x.bam 
+
+
+
+
+######## W22
+# B73 
+sambamba view -h -t 4 -s 0.9537707326 -f bam --subsampling-seed=21 B73_W22v12_map.q20.bam -o subsampled_B73_W22v12_10x.bam
+# PH207
+sambamba view -h -t 4 -s 0.4540336348 -f bam --subsampling-seed=21 PH207_W22v12_map.q20.bam -o subsampled_PH207_W22v12_15x.bam 
+sambamba view -h -t 4 -s 0.9080672696 -f bam --subsampling-seed=21 PH207_W22v12_map.q20.bam -o subsampled_PH207_W22v12_30x.bam 
+sambamba view -h -t 4 -s 0.3026890899 -f bam --subsampling-seed=21 PH207_W22v12_map.q20.bam -o subsampled_PH207_W22v12_10x.bam 
+# Mo17 
+sambamba view -h -t 4 -s 0.5248811144 -f bam --subsampling-seed=21 Mo17_W22v12_map.q20.bam -o subsampled_Mo17_W22v12_15x.bam
+sambamba view -h -t 4 -s 0.349920743 -f bam --subsampling-seed=21 Mo17_W22v12_map.q20.bam -o subsampled_Mo17_W22v12_10x.bam
+
+
+
+
+######## PH207 
+# B73 
+sambamba view -h -t 4 -s 0.8961697704 -f bam --subsampling-seed=21 B73_PH207_map.q20.bam -o subsampled_B73_PH207_10x.bam
+# Mo17 
+sambamba view -h -t 4 -s 0.5036277989 -f bam --subsampling-seed=21 Mo17_PH207_map.q20.bam -o subsampled_Mo17_PH207_15x.bam
+sambamba view -h -t 4 -s 0.3357518659 -f bam --subsampling-seed=21 Mo17_PH207_map.q20.bam -o subsampled_Mo17_PH207_10x.bam
+# W22 
+sambamba view -h -t 4 -s 0.6962333774 -f bam --subsampling-seed=21 W22_PH207_map.q20.bam -o subsampled_W22_PH207_10x.bam
+
+
+
+
+######## Mo17 
+# Mo17 
+sambamba view -h -t 4 -s 0.5307705373 -f bam --subsampling-seed=21 Mo17_B73v4_map.q20.bam -o subsampled_Mo17_B73v4_15x.bam 
+sambamba view -h -t 4 -s 0.3538470249 -f bam --subsampling-seed=21 Mo17_B73v4_map.q20.bam -o subsampled_Mo17_B73v4_10x.bam 
+# PH207 
+sambamba view -h -t 4 -s 0.453117448 -f bam --subsampling-seed=21 PH207_B73v4_map.q20.bam -o subsampled_PH207_B73v4_15x.bam  
+sambamba view -h -t 4 -s 0.9062348961 -f bam --subsampling-seed=21 PH207_B73v4_map.q20.bam -o subsampled_PH207_B73v4_30x.bam  
+sambamba view -h -t 4 -s 0.3020782987 -f bam --subsampling-seed=21 PH207_B73v4_map.q20.bam -o subsampled_PH207_B73v4_10x.bam  
+# W22 
+sambamba view -h -t 4 -s 0.7237146827 -f bam --subsampling-seed=21 W22_B73v4_map.q20.bam -o subsampled_W22_B73v4_10x.bam 
+

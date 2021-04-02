@@ -1,0 +1,154 @@
+# split the 25x below into two files, with ~80,000,000 lines per file
+
+split -l 80000000 B73_ref_25_below_matrix_all.csv B73_ref_25_below_matrix_all_
+split -l 80000000 Mo17_ref_25_below_matrix_all.csv Mo17_ref_25_below_matrix_all_
+split -l 80000000 PH207_ref_25_below_matrix_all.csv PH207_ref_25_below_matrix_all_
+split -l 80000000 W22_ref_25_below_matrix_all.csv W22_ref_25_below_matrix_all_
+ 
+
+
+##################### prediction
+library("caret")
+library("randomForest")
+library("kernlab")
+library("tidyverse")
+library("caTools")
+library("tidyr")
+library("tidyverse")
+
+# load training model 30x 
+model_30x <- readRDS("~/TE_variation/rf_prediction/model/PH207_Mo17_training_30_default_mtry123.rds")
+
+# load training model 15x 
+model_15x <- readRDS("~/TE_variation/rf_prediction/model/all_training_15_default_mtry123.rds")
+
+widiv_30x_refB73 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/B73_ref_25_and_above_matrix_all.csv")
+widiv_15x_refB73_1 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/B73_ref_25_below_matrix_all_aa")
+widiv_15x_refB73_2 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/B73_ref_25_below_matrix_all_ab")
+colnames(widiv_15x_refB73_2) <- c("","TE_ID","start","end","Sequenced_genome","TE_fam","TE_order")
+
+######### prediction ############
+# 30x
+predict_prob_refB73_30x <- predict(model_30x, newdata=widiv_30x_refB73, type="prob")
+refB73_30x_pred_matrix <- cbind(widiv_30x_refB73,predict_prob_refB73_30x)
+write.csv(refB73_30x_pred_matrix,file="refB73_30x_pred_matrix.csv")
+
+
+# 15x_1
+predict_prob_refB73_15x_1 <- predict(model_15x, newdata=widiv_15x_refB73_1, type="prob")
+refB73_15x_pred_matrix_1 <- cbind(widiv_15x_refB73_1,predict_prob_refB73_15x_1)
+write.csv(refB73_15x_pred_matrix_1,file="refB73_15x_pred_matrix_1.csv")
+
+# 15x_2
+predict_prob_refB73_15x_2 <- predict(model_15x, newdata=widiv_15x_refB73_2, type="prob")
+refB73_15x_pred_matrix_2 <- cbind(widiv_15x_refB73_2,predict_prob_refB73_15x_2)
+write.csv(refB73_15x_pred_matrix_2,file="refB73_15x_pred_matrix_2.csv")
+
+
+
+############################### Mo17 
+widiv_30x_refMo17 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/Mo17_ref_25_and_above_matrix_all.csv")
+widiv_15x_refMo17_1 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/Mo17_ref_25_below_matrix_all_aa")
+widiv_15x_refMo17_2 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/Mo17_ref_25_below_matrix_all_ab")
+colnames(widiv_15x_refMo17_2) <- c("","TE_ID","start","end","Sequenced_genome","TE_fam","TE_order")
+
+######### prediction ############
+# 30x
+predict_prob_refMo17_30x <- predict(model_30x, newdata=widiv_30x_refMo17, type="prob")
+refMo17_30x_pred_matrix <- cbind(widiv_30x_refMo17,predict_prob_refMo17_30x)
+write.csv(refMo17_30x_pred_matrix,file="refMo17_30x_pred_matrix.csv")
+
+
+# 15x_1
+predict_prob_refMo17_15x_1 <- predict(model_15x, newdata=widiv_15x_refMo17_1, type="prob")
+refMo17_15x_pred_matrix_1 <- cbind(widiv_15x_refMo17_1,predict_prob_refMo17_15x_1)
+write.csv(refMo17_15x_pred_matrix_1,file="refMo17_15x_pred_matrix_1.csv")
+
+# 15x_2
+predict_prob_refMo17_15x_2 <- predict(model_15x, newdata=widiv_15x_refMo17_2, type="prob")
+refMo17_15x_pred_matrix_2 <- cbind(widiv_15x_refMo17_2,predict_prob_refMo17_15x_2)
+write.csv(refMo17_15x_pred_matrix_2,file="refMo17_15x_pred_matrix_2.csv")
+
+############################## PH207 
+widiv_30x_refPH207 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/PH207_ref_25_and_above_matrix_all.csv")
+widiv_15x_refPH207_1 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/PH207_ref_25_below_matrix_all_aa")
+widiv_15x_refPH207_2 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/PH207_ref_25_below_matrix_all_ab")
+colnames(widiv_15x_refPH207_2) <- c("","TE_ID","start","end","Sequenced_genome","TE_fam","TE_order")
+
+######### prediction ############
+# 30x
+predict_prob_refPH207_30x <- predict(model_30x, newdata=widiv_30x_refPH207, type="prob")
+refPH207_30x_pred_matrix <- cbind(widiv_30x_refPH207,predict_prob_refPH207_30x)
+write.csv(refPH207_30x_pred_matrix,file="refPH207_30x_pred_matrix.csv")
+
+
+# 15x_1
+predict_prob_refPH207_15x_1 <- predict(model_15x, newdata=widiv_15x_refPH207_1, type="prob")
+refPH207_15x_pred_matrix_1 <- cbind(widiv_15x_refPH207_1,predict_prob_refPH207_15x_1)
+write.csv(refPH207_15x_pred_matrix_1,file="refPH207_15x_pred_matrix_1.csv")
+
+# 15x_2
+predict_prob_refPH207_15x_2 <- predict(model_15x, newdata=widiv_15x_refPH207_2, type="prob")
+refPH207_15x_pred_matrix_2 <- cbind(widiv_15x_refPH207_2,predict_prob_refPH207_15x_2)
+write.csv(refPH207_15x_pred_matrix_2,file="refPH207_15x_pred_matrix_2.csv")
+
+
+############################### W22 
+widiv_30x_refW22 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/W22_ref_25_and_above_matrix_all.csv")
+widiv_15x_refW22_1 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/W22_ref_25_below_matrix_all_aa")
+widiv_15x_refW22_2 <- read.csv(file = "~/TE_variation/rf_prediction/widiv_set/W22_ref_25_below_matrix_all_ab")
+colnames(widiv_15x_refW22_2) <- c("","TE_ID","start","end","Sequenced_genome","TE_fam","TE_order")
+
+######### prediction ############
+# 30x
+predict_prob_refW22_30x <- predict(model_30x, newdata=widiv_30x_refW22, type="prob")
+refW22_30x_pred_matrix <- cbind(widiv_30x_refW22,predict_prob_refW22_30x)
+write.csv(refW22_30x_pred_matrix,file="refW22_30x_pred_matrix.csv")
+
+
+# 15x_1
+predict_prob_refW22_15x_1 <- predict(model_15x, newdata=widiv_15x_refW22_1, type="prob")
+refW22_15x_pred_matrix_1 <- cbind(widiv_15x_refW22_1,predict_prob_refW22_15x_1)
+write.csv(refW22_15x_pred_matrix_1,file="refW22_15x_pred_matrix_1.csv")
+
+# 15x_2
+predict_prob_refW22_15x_2 <- predict(model_15x, newdata=widiv_15x_refW22_2, type="prob")
+refW22_15x_pred_matrix_2 <- cbind(widiv_15x_refW22_2,predict_prob_refW22_15x_2)
+write.csv(refW22_15x_pred_matrix_2,file="refW22_15x_pred_matrix_2.csv")
+
+
+
+
+# the input file will include three files: 30x, 15x-a, and 15x-b
+
+cat refB73_* | grep -v TE_ID | cut -d ',' -f 3-10 > refB73v4_fam_widiv_509.csv
+cat refMo17_* | grep -v TE_ID | cut -d ',' -f 3-10 > refMo17_fam_widiv_509.csv
+cat refPH207_* | grep -v TE_ID | cut -d ',' -f 3-10 > refPH207_fam_widiv_509.csv
+cat refW22_* | grep -v TE_ID | cut -d ',' -f 3-10 > refW22_fam_widiv_509.csv
+
+
+
+cat refB73_* | grep -v TE_ID | cut -d ',' -f 3-10 > refB73v4_order_widiv_509.csv
+cat refMo17_* | grep -v TE_ID | cut -d ',' -f 3-10 > refMo17_order_widiv_509.csv
+cat refPH207_* | grep -v TE_ID | cut -d ',' -f 3-10 > refPH207_order_widiv_509.csv
+cat refW22_* | grep -v TE_ID | cut -d ',' -f 3-10 > refW22_order_widiv_509.csv
+
+
+
+# reshape all matrix to wide with present probably filled as value. 
+
+library(data.table)
+library(tidyverse)
+files <- list.files(path="/home/hirschc1/qiuxx221/TE_variation/rf_prediction/prediction/", pattern="*.csv", full.names=TRUE, recursive=FALSE)
+lapply(files, function(x) {
+  df <- fread(x, header = FALSE, data.table = FALSE)
+  colnames(df) <- c("TE_ID","start","end","Sequenced_genome","TE_fam","TE_order","absent","present")
+  df_select = df %>% select(TE_ID,Sequenced_genome,present) 
+  df_select %>% 
+    spread(Sequenced_genome, present) %>% write.csv(paste0(x, "_present_probability_wide.csv"), row.names = FALSE)
+})
+
+
+
+
+

@@ -1,0 +1,11 @@
+# for all coverage, 
+/home/hirschc1/qiuxx221/TE_variation/downsampling_priors/all/all_coverage 
+
+###### 30x 
+cat *_absent_* | sed 's/$/\tabsent/g'  > absent_downsampling_cov_30x_matrix.txt
+cat *_present_* | sed 's/$/\tpresent/g'  > present_downsampling_cov_30x_matrix.txt 
+
+###### 15x  
+cat *_absent_* |  sed 's/$/\tabsent/g'  > absent_downsampling_cov_15x_matrix.txt
+cat *_present_* |  sed 's/$/\tpresent/g'  > present_downsampling_cov_15x_matrix.txt 
+

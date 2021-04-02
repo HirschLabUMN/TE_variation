@@ -1,0 +1,75 @@
+#################### PH207 ref, cov >=25 
+mkdir /home/hirschc1/qiuxx221/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/above_and_25/rf_input_30x_model
+
+cd /home/hirschc1/qiuxx221/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/above_and_25/
+  for i in *.txt; do
+id=$(echo "$i" | cut -d '_' -f 1)
+sed "s/$/\t$id/" "$i" >  "$i"_add.txt
+done 
+
+mv *add.txt rf_input_30x_model
+
+cat ~/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/above_and_25/rf_input_30x_model/*add.txt | grep -v "TEname" > ~/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/above_and_25/rf_input_30x_model/PH207_ref_25_and_above.txt
+
+mv ~/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/above_and_25/rf_input_30x_model/PH207_ref_25_and_above.txt ~/TE_variation/rf_prediction/widiv_set
+
+
+#################### PH207 ref, cov < 25 
+mkdir /home/hirschc1/qiuxx221/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/below_25/rf_input_15x_model
+
+cd /home/hirschc1/qiuxx221/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/below_25/
+  for i in *.txt; do
+id=$(echo "$i" | cut -d '_' -f 1)
+sed "s/$/\t$id/" "$i" >  "$i"_add.txt
+done 
+mv *add.txt rf_input_15x_model
+
+cat ~/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/below_25/rf_input_15x_model/*add.txt | grep -v "TEname" > ~/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/below_25/rf_input_15x_model/PH207_ref_25_below.txt
+
+mv ~/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtool_files/below_25/rf_input_15x_model/PH207_ref_25_below.txt ~/TE_variation/rf_prediction/widiv_set
+
+cd ~/TE_variation/rf_prediction/widiv_set
+module load R/3.6.3 
+Rscript format_refPH207.R
+
+
+###############################################
+
+# in R session, creating matrix 
+library("tidyverse")
+reshape_df <- read.csv( "PH207_ref_25_and_above.txt", sep="\t",header = FALSE)
+colnames(reshape_df) <- c("TE_ID", "start", "end", "Sequenced_genome")
+reshape_df$TE_fam <- substr(reshape_df$TE_ID, 0, 3)
+reshape_df$TE_order <-ifelse(reshape_df$TE_fam == "DHH",rr2 <-"Helitron",
+                             ifelse(reshape_df$TE_fam == "DTA",rr2 <-"TIR",
+                                    ifelse(reshape_df$TE_fam == "DTC", rr2<-"TIR",
+                                           ifelse(reshape_df$TE_fam == "DTH", rr2<-"TIR",
+                                                  ifelse(reshape_df$TE_fam == "DTM", rr2<-"TIR",
+                                                         ifelse(reshape_df$TE_fam == "DTT", rr2<-"TIR",
+                                                                ifelse(reshape_df$TE_fam == "DTX", rr2<-"TIR",
+                                                                       ifelse(reshape_df$TE_fam == "RIL", rr2<-"LINE",
+                                                                              ifelse(reshape_df$TE_fam == "RIT", rr2<-"LINE",
+                                                                                     ifelse(reshape_df$TE_fam == "RLC", rr2<-"LTR",
+                                                                                            ifelse(reshape_df$TE_fam == "RLG", rr2<-"LTR",
+                                                                                                   ifelse(reshape_df$TE_fam == "RLX", rr2<-"LTR",
+                                                                                                          rr2<-"SINE"))))))))))))
+write.csv(reshape_df, file="PH207_ref_25_and_above_matrix_all.csv")
+
+
+reshape_df <- read.csv( "PH207_ref_25_below.txt", sep="\t",header = FALSE)
+colnames(reshape_df) <- c("TE_ID", "start", "end", "Sequenced_genome")
+reshape_df$TE_fam <- substr(reshape_df$TE_ID, 0, 3)
+reshape_df$TE_order <-ifelse(reshape_df$TE_fam == "DHH",rr2 <-"Helitron",
+                             ifelse(reshape_df$TE_fam == "DTA",rr2 <-"TIR",
+                                    ifelse(reshape_df$TE_fam == "DTC", rr2<-"TIR",
+                                           ifelse(reshape_df$TE_fam == "DTH", rr2<-"TIR",
+                                                  ifelse(reshape_df$TE_fam == "DTM", rr2<-"TIR",
+                                                         ifelse(reshape_df$TE_fam == "DTT", rr2<-"TIR",
+                                                                ifelse(reshape_df$TE_fam == "DTX", rr2<-"TIR",
+                                                                       ifelse(reshape_df$TE_fam == "RIL", rr2<-"LINE",
+                                                                              ifelse(reshape_df$TE_fam == "RIT", rr2<-"LINE",
+                                                                                     ifelse(reshape_df$TE_fam == "RLC", rr2<-"LTR",
+                                                                                            ifelse(reshape_df$TE_fam == "RLG", rr2<-"LTR",
+                                                                                                   ifelse(reshape_df$TE_fam == "RLX", rr2<-"LTR",
+                                                                                                          rr2<-"SINE"))))))))))))
+write.csv(reshape_df, file="PH207_ref_25_below_matrix_all.csv")

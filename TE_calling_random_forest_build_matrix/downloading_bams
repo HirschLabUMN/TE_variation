@@ -1,0 +1,25 @@
+# Mo17
+s3cmd get s3://oconnorcWiDivBams/B73_Mo17_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/W22_Mo17_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/PH207_Mo17_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/Mo17_Mo17_map.q20.bam
+
+# B73v4
+s3cmd get s3://oconnorcWiDivBams/Mo17_B73v4_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/W22_B73v4_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/PH207_B73v4_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/B73_B73v4_map.q20.bam
+
+# W22v12
+s3cmd get s3://oconnorcWiDivBams/B73_W22v12_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/Mo17_W22v12_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/PH207_W22v12_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/W22_W22v12_map.q20.bam
+
+# PH207
+s3cmd get s3://oconnorcWiDivBams/B73_PH207_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/Mo17_PH207_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/W22_PH207_map.q20.bam
+s3cmd get s3://oconnorcWiDivBams/PH207_PH207_map.q20.bam
+
+

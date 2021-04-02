@@ -1,0 +1,30 @@
+# get the base to join frequency of each TE
+
+cut -f 1,2,4,6,8,10,11-15  non-redundant_TEs_4genomes_1Feb19_chrnum_edit.txt > ~/TE_variation/base_for_non_TE_joint.txt
+
+
+# getting te nested info
+
+-rw-r-----. 1 oconnorc hirschc1 11382116 Mar 17  2020 B73.structuralTEv2.2018.12.20.filteredTE_TE.nest.status.txt
+-rw-r-----. 1 oconnorc hirschc1 10202188 Apr  9  2020 Mo17.structuralTEv2.2018.12.28.filteredTE_TE.nest.status.txt
+-rw-r-----. 1 oconnorc hirschc1  8312812 Apr  9  2020 PH207.structuralTEv2.2018.10.30.filteredTE_TE.nest.status.txt
+-rw-r-----. 1 oconnorc hirschc1 10670340 Apr  9  2020 W22.structuralTEv2.10.08.2018.filteredTE_TE.nest.status.txt
+
+(base) qiuxx221@ln1001 [/home/hirschc1/oconnorc/sarah_te_files] % cat *nest.status.txt* > ~/TE_variation/TE_nest_info.txt
+
+# getting LTR similarity 
+(base) qiuxx221@ln1001 [/home/hirschc1/oconnorc/sarah_te_files] % ls -l *similarity* 
+-rw-r-----. 1 oconnorc hirschc1 3614080 Sep 10  2019 B73_LTRsimilarity.txt
+-rw-r-----. 1 oconnorc hirschc1 3674301 Sep 10  2019 Mo17_LTRsimilarity.txt
+-rw-r-----. 1 oconnorc hirschc1 2553868 Sep 10  2019 PH207_LTRsimilarity.txt
+-rw-r-----. 1 oconnorc hirschc1 3615562 Sep 10  2019 W22_LTRsimilarity.txt
+(base) qiuxx221@ln1001 [/home/hirschc1/oconnorc/sarah_te_files] % cat *similarity* > ~/TE_variation/LTR_similarity_YQ.txt
+# it is the same file All_LTR_age
+
+
+# cd /home/hirschc1/oconnorc/sarah_te_files
+cut -f 1,3,6,7,8  PH207.structuralTEv2.2018.10.30.filteredTE_metadata.txt > ~/TE_variation/PH207_TE_meta.txt
+cut -f 1,3,6,7,8  Mo17.structuralTEv2.2018.12.28.filteredTE_metadata.txt > ~/TE_variation/Mo17_TE_meta.txt
+cut -f 1,3,6,7,9  B73.structuralTEv2.2018.12.20.filteredTE_TEmetadata.txt > ~/TE_variation/B73_TE_meta.txt
+cut -f 1,3,6,7,8 W22.structuralTEv2.10.08.2018.filteredTE_metadata.txt > ~/TE_variation/W22_TE_meta.txt
+

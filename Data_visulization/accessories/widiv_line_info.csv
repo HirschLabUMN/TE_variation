@@ -1,0 +1,529 @@
+taxa,Maize Type
+FC46,Flint/Popcorn
+911,Iodent
+912,Iodent
+1538,Iodent
+29MIBZ2,Iodent
+3IJI1,Iodent
+91IFC2,Iodent
+DE2,Iodent
+DK3IIH6,Iodent
+DKH3IIH6,Iodent
+DKIB014,Iodent
+IBB14,Iodent
+IBB15,Iodent
+ICI-986,Iodent
+L-127,Iodent
+L-135,Iodent
+L-155,Iodent
+LIBC-4,Iodent
+MBWZ,Iodent
+MQ305,Iodent
+NQ508,Iodent
+OQ403,Iodent
+OQ603,Iodent
+OS602,Iodent
+PH207,Iodent
+PHG29,Iodent
+PHG50,Iodent
+PHG72,Iodent
+PHG83,Iodent
+PHG84,Iodent
+PHGW7,Iodent
+PHH93,Iodent
+PHJ33,Iodent
+PHJ90,Iodent
+PHK42,Iodent
+PHK74,Iodent
+PHKE6,Iodent
+PHM10,Iodent
+PHN11,Iodent
+PHN82,Iodent
+PHP02,Iodent
+PHP55,Iodent
+PHP76,Iodent
+PHR31,Iodent
+PHR36,Iodent
+PHR62,Iodent
+PHR63,Iodent
+PHT22,Iodent
+PHV57,Iodent
+PHVJ4,Iodent
+PHW53,Iodent
+PHW86,Iodent
+SD102,Iodent
+A340,Mixed
+B107,Mixed
+B114,Mixed
+CH157,Mixed
+CS405,Mixed
+DE4,Mixed
+DKHBA1,Mixed
+EAST-028,Mixed
+FR19,Mixed
+H113,Mixed
+ICI-193,Mixed
+J8606,Mixed
+LH172,Mixed
+LH184,Mixed
+LH191,Mixed
+MBPM,Mixed
+MEF156-55-2,Mixed
+Mo5,Mixed
+MS132,Mixed
+MS1334,Mixed
+MS153,Mixed
+MS67,Mixed
+N211,Mixed
+N215,Mixed
+N534,Mixed
+NC230,Mixed
+ND259,Mixed
+NS501,Mixed
+NY-159,Mixed
+NY-166,Mixed
+Os426,Mixed
+Pa405,Mixed
+PHG35,Mixed
+PHHH9,Mixed
+PHJ70,Mixed
+PHKM5,Mixed
+PHMK0,Mixed
+PHN29,Mixed
+PHR03,Mixed
+PHR47,Mixed
+PHV78,Mixed
+PHW03,Mixed
+PHW20,Mixed
+PHW30,Mixed
+PHW79,Mixed
+R113,Mixed
+R181B,Mixed
+R226,Mixed
+SD40,Mixed
+SD44,Mixed
+Va52,Mixed
+W552,Mixed
+W602S,Mixed
+W610S,Mixed
+W803G,Mixed
+W814G,Mixed
+W815G,Mixed
+WR3,Mixed
+2MA22,Non Stiff Stalk
+2MCDB,Non Stiff Stalk
+6M502,Non Stiff Stalk
+6M502A,Non Stiff Stalk
+78551S,Non Stiff Stalk
+A,Non Stiff Stalk
+A208,Non Stiff Stalk
+A239,Non Stiff Stalk
+A258,Non Stiff Stalk
+A321,Non Stiff Stalk
+A374,Non Stiff Stalk
+A385,Non Stiff Stalk
+A401,Non Stiff Stalk
+A548,Non Stiff Stalk
+A556,Non Stiff Stalk
+A619,Non Stiff Stalk
+A627,Non Stiff Stalk
+A648,Non Stiff Stalk
+A649,Non Stiff Stalk
+A659,Non Stiff Stalk
+A682,Non Stiff Stalk
+A73,Non Stiff Stalk
+AS5707,Non Stiff Stalk
+AusTRCF-306238,Non Stiff Stalk
+B103,Non Stiff Stalk
+B120,Non Stiff Stalk
+B2,Non Stiff Stalk
+B65,Non Stiff Stalk
+B66,Non Stiff Stalk
+B70,Non Stiff Stalk
+B91,Non Stiff Stalk
+B97,Non Stiff Stalk
+C103,Non Stiff Stalk
+C123,Non Stiff Stalk
+CQ702RC,Non Stiff Stalk
+CR1Ht,Non Stiff Stalk
+DE3,Non Stiff Stalk
+DK78371A,Non Stiff Stalk
+DKMBNA,Non Stiff Stalk
+E8501,Non Stiff Stalk
+H5,Non Stiff Stalk
+H71,Non Stiff Stalk
+H95,Non Stiff Stalk
+Hy,Non Stiff Stalk
+IBC2,Non Stiff Stalk
+ICI581,Non Stiff Stalk
+L-139,Non Stiff Stalk
+LH123Ht,Non Stiff Stalk
+LH127,Non Stiff Stalk
+LH128,Non Stiff Stalk
+LH156,Non Stiff Stalk
+LH165,Non Stiff Stalk
+LH166,Non Stiff Stalk
+LH168,Non Stiff Stalk
+LH181,Non Stiff Stalk
+LH185,Non Stiff Stalk
+LH211,Non Stiff Stalk
+LH213,Non Stiff Stalk
+LH214,Non Stiff Stalk
+LH215,Non Stiff Stalk
+LH216,Non Stiff Stalk
+LH295,Non Stiff Stalk
+LH38,Non Stiff Stalk
+LH54,Non Stiff Stalk
+LH57,Non Stiff Stalk
+LH59,Non Stiff Stalk
+LH60,Non Stiff Stalk
+LH61,Non Stiff Stalk
+LH65,Non Stiff Stalk
+LH85,Non Stiff Stalk
+Lp215D,Non Stiff Stalk
+MBST,Non Stiff Stalk
+ML606,Non Stiff Stalk
+MM501D,Non Stiff Stalk
+Mo17,Non Stiff Stalk
+Mo1W,Non Stiff Stalk
+Mo44,Non Stiff Stalk
+MS211,Non Stiff Stalk
+MS71,Non Stiff Stalk
+N193,Non Stiff Stalk
+N197,Non Stiff Stalk
+N200,Non Stiff Stalk
+N6,Non Stiff Stalk
+NC342,Non Stiff Stalk
+ND247,Non Stiff Stalk
+ND265,Non Stiff Stalk
+NK740,Non Stiff Stalk
+NK778,Non Stiff Stalk
+NKS8326,Non Stiff Stalk
+Oh40B,Non Stiff Stalk
+Oh43,Non Stiff Stalk
+Oh7,Non Stiff Stalk
+Os420,Non Stiff Stalk
+Pa762,Non Stiff Stalk
+Pa778,Non Stiff Stalk
+Pa91,Non Stiff Stalk
+PHBA6,Non Stiff Stalk
+PHG47,Non Stiff Stalk
+PHJ89,Non Stiff Stalk
+PHK46,Non Stiff Stalk
+PHK56,Non Stiff Stalk
+PHK76,Non Stiff Stalk
+PHK93,Non Stiff Stalk
+PHN34,Non Stiff Stalk
+PHN46,Non Stiff Stalk
+PHR55,Non Stiff Stalk
+PHR58,Non Stiff Stalk
+PHTM9,Non Stiff Stalk
+PHW43,Non Stiff Stalk
+PHW65,Non Stiff Stalk
+PHW80,Non Stiff Stalk
+PHWG5,Non Stiff Stalk
+PHZ51,Non Stiff Stalk
+Q381,Non Stiff Stalk
+R168,Non Stiff Stalk
+R71,Non Stiff Stalk
+S8326,Non Stiff Stalk
+SCRO1,Non Stiff Stalk
+Seagull-Seventeen,Non Stiff Stalk
+Va102,Non Stiff Stalk
+Va17,Non Stiff Stalk
+Va22,Non Stiff Stalk
+Va26,Non Stiff Stalk
+Va35,Non Stiff Stalk
+Va59,Non Stiff Stalk
+Va99,Non Stiff Stalk
+W117Ht,Non Stiff Stalk
+W153R,Non Stiff Stalk
+W182E,Non Stiff Stalk
+W182Ngt,Non Stiff Stalk
+W22,Non Stiff Stalk
+W23,Non Stiff Stalk
+W32,Non Stiff Stalk
+W37A,Non Stiff Stalk
+W603S,Non Stiff Stalk
+W604S,Non Stiff Stalk
+W605S,Non Stiff Stalk
+W606S,Non Stiff Stalk
+W607S,Non Stiff Stalk
+W611S,Non Stiff Stalk
+W612S,Non Stiff Stalk
+W613S,Non Stiff Stalk
+W614S,Non Stiff Stalk
+W64A,Non Stiff Stalk
+W701BC,Non Stiff Stalk
+W810G,Non Stiff Stalk
+W817G,Non Stiff Stalk
+W821G,Non Stiff Stalk
+W9,Non Stiff Stalk
+Wf9,Non Stiff Stalk
+WIL900,Non Stiff Stalk
+WIL901,Non Stiff Stalk
+WIL903,Non Stiff Stalk
+B-18,Flint/Popcorn
+B-28,Flint/Popcorn
+HP301,Flint/Popcorn
+I29,Flint/Popcorn
+IDS28,Flint/Popcorn
+IDS69,Flint/Popcorn
+IDS91,Flint/Popcorn
+K47,Flint/Popcorn
+NC262,Flint/Popcorn
+NC290A,Flint/Popcorn
+SG-30A,Flint/Popcorn
+764,Stiff Stalk
+790,Stiff Stalk
+792,Stiff Stalk
+793,Stiff Stalk
+2369,Stiff Stalk
+78010,Stiff Stalk
+2FACC,Stiff Stalk
+2FADB,Stiff Stalk
+4N506,Stiff Stalk
+6F629,Stiff Stalk
+87916W,Stiff Stalk
+A632,Stiff Stalk
+A634,Stiff Stalk
+A635,Stiff Stalk
+A641,Stiff Stalk
+A672,Stiff Stalk
+A679,Stiff Stalk
+A680,Stiff Stalk
+AQA3,Stiff Stalk
+AS6103,Stiff Stalk
+B104,Stiff Stalk
+B105,Stiff Stalk
+B109,Stiff Stalk
+B110,Stiff Stalk
+B111,Stiff Stalk
+B119,Stiff Stalk
+B121,Stiff Stalk
+B14,Stiff Stalk
+B14A,Stiff Stalk
+B37,Stiff Stalk
+B47,Stiff Stalk
+B68,Stiff Stalk
+B73,Stiff Stalk
+B76,Stiff Stalk
+B84,Stiff Stalk
+CH753-4,Stiff Stalk
+CM105,Stiff Stalk
+CO257,Stiff Stalk
+CO258,Stiff Stalk
+CR14,Stiff Stalk
+DE811,Stiff Stalk
+DJ7,Stiff Stalk
+DK78002A,Stiff Stalk
+DK78010,Stiff Stalk
+DKFAPW,Stiff Stalk
+DKFBHJ,Stiff Stalk
+DKPB80,Stiff Stalk
+F118,Stiff Stalk
+FBLA,Stiff Stalk
+FBLL,Stiff Stalk
+H105W,Stiff Stalk
+H114,Stiff Stalk
+H122w,Stiff Stalk
+H84,Stiff Stalk
+H91,Stiff Stalk
+ICI-441,Stiff Stalk
+ICI-740,Stiff Stalk
+ICI-893,Stiff Stalk
+INB-101LFY,Stiff Stalk
+LH1,Stiff Stalk
+LH119,Stiff Stalk
+LH132,Stiff Stalk
+LH143,Stiff Stalk
+LH145,Stiff Stalk
+LH146Ht,Stiff Stalk
+LH149,Stiff Stalk
+LH190,Stiff Stalk
+LH192,Stiff Stalk
+LH193,Stiff Stalk
+LH194,Stiff Stalk
+LH195,Stiff Stalk
+LH197,Stiff Stalk
+LH198,Stiff Stalk
+LH199,Stiff Stalk
+LH200,Stiff Stalk
+LH202,Stiff Stalk
+LH204,Stiff Stalk
+LH205,Stiff Stalk
+LH206,Stiff Stalk
+LH208,Stiff Stalk
+LH209,Stiff Stalk
+LH222,Stiff Stalk
+LH223,Stiff Stalk
+LH224,Stiff Stalk
+LH227,Stiff Stalk
+LH74,Stiff Stalk
+LP1-NR-HT,Stiff Stalk
+LP5,Stiff Stalk
+MS221,Stiff Stalk
+N192,Stiff Stalk
+N201,Stiff Stalk
+N209,Stiff Stalk
+N217,Stiff Stalk
+N218,Stiff Stalk
+N28,Stiff Stalk
+N28Ht,Stiff Stalk
+N501,Stiff Stalk
+N523,Stiff Stalk
+N527,Stiff Stalk
+N542,Stiff Stalk
+N7A,Stiff Stalk
+NC250,Stiff Stalk
+NC294,Stiff Stalk
+NC310,Stiff Stalk
+NC326,Stiff Stalk
+NC328,Stiff Stalk
+NC368,Stiff Stalk
+NK807,Stiff Stalk
+NKH8431,Stiff Stalk
+NS701,Stiff Stalk
+PHAA0,Stiff Stalk
+PHB09,Stiff Stalk
+PHB47,Stiff Stalk
+PHBB3,Stiff Stalk
+PHBW8,Stiff Stalk
+PHEG9,Stiff Stalk
+PHG39,Stiff Stalk
+PHG71,Stiff Stalk
+PHG80,Stiff Stalk
+PHG86,Stiff Stalk
+PHJ40,Stiff Stalk
+PHJR5,Stiff Stalk
+PHK29,Stiff Stalk
+PHK35,Stiff Stalk
+PHN66,Stiff Stalk
+PHP38,Stiff Stalk
+PHP85,Stiff Stalk
+PHPR5,Stiff Stalk
+PHT10,Stiff Stalk
+PHT11,Stiff Stalk
+PHT47,Stiff Stalk
+PHT55,Stiff Stalk
+PHT69,Stiff Stalk
+PHV37,Stiff Stalk
+PHV63,Stiff Stalk
+PHVA9,Stiff Stalk
+PHW17,Stiff Stalk
+PHW52,Stiff Stalk
+R227,Stiff Stalk
+R229,Stiff Stalk
+SD101,Stiff Stalk
+SD107,Stiff Stalk
+Tr,Stiff Stalk
+W809G,Stiff Stalk
+W811G,Stiff Stalk
+W812G,Stiff Stalk
+W813G,Stiff Stalk
+W819G,Stiff Stalk
+W820G,Stiff Stalk
+W8304,Stiff Stalk
+ZS365,Stiff Stalk
+ZS635,Stiff Stalk
+CA-4,Sweet Corn
+Ia-453,Sweet Corn
+IA2132,Sweet Corn
+Il778d,Sweet Corn
+T242,Sweet Corn
+4F-234-BX-4,Tropical
+4F-35-BK,Tropical
+A272,Tropical
+F2834T,Tropical
+HUANYAO,Tropical
+HUOBAI,Tropical
+INBRED-109,Tropical
+INBRED-2-687,Tropical
+INBRED-321,Tropical
+NC412,Tropical
+NY6371,Tropical
+YE-4,Tropical
+4226,Unknown
+33-16,Unknown
+4F-306-108,Unknown
+A188,Unknown
+A305,Unknown
+A322,Unknown
+A334,Unknown
+A427,Unknown
+A572,Unknown
+A663,Unknown
+A674,Unknown
+A71,Unknown
+A797NW,Unknown
+B108,Unknown
+B115,Unknown
+B164,Unknown
+B46,Unknown
+B57,Unknown
+B75,Unknown
+B77,Unknown
+B79,Unknown
+B85,Unknown
+B87,Unknown
+B88,Unknown
+B98,Unknown
+BEI-10,Unknown
+BO9,Unknown
+CG102,Unknown
+CH701-30,Unknown
+CH711-10,Unknown
+CH9,Unknown
+CI-40H,Unknown
+CR-22,Unknown
+DK4676A,Unknown
+Eng-Li-Chih,Unknown
+G80,Unknown
+H110,Unknown
+H121,Unknown
+H42,Unknown
+H96,Unknown
+H99,Unknown
+INBRED-141,Unknown
+INBRED-305,Unknown
+INBRED-309,Unknown
+J47,Unknown
+K150,Unknown
+K41,Unknown
+K55,Unknown
+KUNG-70,Unknown
+L-289,Unknown
+LH82,Unknown
+LH93,Unknown
+M14,Unknown
+Mo45,Unknown
+Mo46,Unknown
+Mo47,Unknown
+MoG,Unknown
+MS116,Unknown
+MS200,Unknown
+MS224,Unknown
+MS225,Unknown
+MS226,Unknown
+MS24A,Unknown
+MS72,Unknown
+NORTH-7,Unknown
+NP899,Unknown
+Ny821,Unknown
+OC19,Unknown
+OH33,Unknown
+Pa392,Unknown
+Pa875,Unknown
+Pa880,Unknown
+PHHV4,Unknown
+PHR30,Unknown
+R177,Unknown
+R78,Unknown
+TZU-CHIAO-HSI-WU-105,Unknown
+VaW6,Unknown
+W24,Unknown
+WU-TAN-TZAO,Unknown
+WXB6,Unknown
+YING-55,Unknown
+YONG-28,Unknown
+Yu796-NS,Unknown

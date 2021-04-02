@@ -1,0 +1,52 @@
+# get genotype name that are put into two groups 
+
+for i in *.txt; do  awk -F "\t" '$3 >=25' $i | cut -f 1 > 25_and_above_$i.txt; done
+for i in *.txt; do  awk -F "\t" '$3 <25' $i | cut -f 1 > 25_below_$i.txt; done
+
+# split all coverage info by mean genome coverage
+for i in *refB73v4_mean_cov_allbams.txt_509.txt.txt; do 
+  sed -i 's/$/_B73v4_TEcov_bedtools.txt/g' $i 
+done 
+
+
+
+/home/hirschc1/qiuxx221/TE_variation/genome_mean_coverage/509/coverage_group
+
+# B73 ref 
+for file in $(cat ~/TE_variation/genome_mean_coverage/509/coverage_group/25_and_above_refB73v4_mean_cov_allbams.txt_509.txt.txt); do mv "$file" ~/TE_variation/widiv_coverage/B73_TE_calls/joined_bedtool_files/above_and_25 ; done
+for file in $(cat ~/TE_variation/genome_mean_coverage/509/coverage_group/25_below_refB73v4_mean_cov_allbams.txt_509.txt.txt); do mv "$file" ~/TE_variation/widiv_coverage/B73_TE_calls/joined_bedtool_files/below_25 ; done
+
+
+
+# PH207 ref 
+
+for i in *refPH207_mean_cov_allbams.txt_509.txt.txt; do 
+  sed -i 's/$/_PH207_TEcov_bedtools.txt/g' $i 
+done 
+
+
+for file in $(cat ~/TE_variation/genome_mean_coverage/509/coverage_group/25_and_above_refPH207_mean_cov_allbams.txt_509.txt.txt); do mv "$file" ~/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtools_files/above_and_25 ; done
+for file in $(cat ~/TE_variation/genome_mean_coverage/509/coverage_group/25_below_refPH207_mean_cov_allbams.txt_509.txt.txt); do mv "$file" ~/TE_variation/widiv_coverage/PH207_TE_calls/joined_bedtools_files/below_25 ; done
+
+# Mo17 ref 
+
+for i in *refMo17_mean_cov_allbams.txt_509.txt.txt; do 
+  sed -i 's/$/_Mo17_TEcov_bedtools.txt/g' $i 
+done 
+
+
+for file in $(cat ~/TE_variation/genome_mean_coverage/509/coverage_group/25_and_above_refMo17_mean_cov_allbams.txt_509.txt.txt); do mv "$file" ~/TE_variation/widiv_coverage/Mo17_TE_calls/joined_bedtool_files/above_and_25 ; done
+for file in $(cat ~/TE_variation/genome_mean_coverage/509/coverage_group/25_below_refMo17_mean_cov_allbams.txt_509.txt.txt); do mv "$file" ~/TE_variation/widiv_coverage/Mo17_TE_calls/joined_bedtool_files/below_25 ; done
+
+
+
+# W22 ref 
+
+for i in *refW22v12_mean_cov_allbams.txt_509.txt.txt; do 
+  sed -i 's/$/_W22v12_TEcov_bedtools.txt/g' $i 
+done 
+
+for file in $(cat ~/TE_variation/genome_mean_coverage/509/coverage_group/25_and_above_refW22v12_mean_cov_allbams.txt_509.txt.txt); do mv "$file" ~/TE_variation/widiv_coverage/W22_TE_calls/joined_bedtools_files/above_and_25 ; done
+for file in $(cat ~/TE_variation/genome_mean_coverage/509/coverage_group/25_below_refW22v12_mean_cov_allbams.txt_509.txt.txt); do mv "$file" ~/TE_variation/widiv_coverage/W22_TE_calls/joined_bedtools_files/below_25 ; done
+
+

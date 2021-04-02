@@ -1,0 +1,59 @@
+# the determination of false and true priors were determined using TE contrast files.
+/home/hirschc1/qiuxx221/TE_variation/downsampling_priors/contrast_bed
+
+
+# For W22 reference genomes
+# W22 
+cut -f 4 W22_allContrasts_filteredTE_13Jan19.bed | cut -d ";" -f 1  > W22_present_W22_ref.txt
+
+# B73 
+cut -f 4 W22_allContrasts_filteredTE_13Jan19.bed | cut -d ";" -f 1,2 | grep Present | cut -d ';' -f 1 > B73_present_W22_ref.txt
+cut -f 4 W22_allContrasts_filteredTE_13Jan19.bed | cut -d ";" -f 1,2 | grep Absent | cut -d ';' -f 1 > B73_absent_W22_ref.txt
+# Mo17
+cut -f 4 W22_allContrasts_filteredTE_13Jan19.bed | cut -d ";" -f 1,3 | grep Present | cut -d ';' -f 1 > Mo17_present_W22_ref.txt
+cut -f 4 W22_allContrasts_filteredTE_13Jan19.bed | cut -d ";" -f 1,3 | grep Absent | cut -d ';' -f 1 > Mo17_absent_W22_ref.txt
+# PH207
+cut -f 4 W22_allContrasts_filteredTE_13Jan19.bed | cut -d ";" -f 1,4 | grep Present | cut -d ';' -f 1 > PH207_present_W22_ref.txt
+cut -f 4 W22_allContrasts_filteredTE_13Jan19.bed | cut -d ";" -f 1,4 | grep Absent | cut -d ';' -f 1 > PH207_absent_W22_ref.txt
+
+
+############################################################ 15x ############################################################
+### Present 
+# W22 
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/W22_present_W22_ref.txt subsampled_W22_W22_15x.bam_fmt_10_bp.txt > cov_W22_present_W22_15x.txt
+
+# PH207  
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/PH207_present_W22_ref.txt subsampled_PH207_W22v12_15x.bam_fmt_10_bp.txt > cov_PH207_present_W22_15x.txt
+
+# Mo17
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/Mo17_present_W22_ref.txt subsampled_Mo17_W22v12_15x.bam_fmt_10_bp.txt > cov_Mo17_present_W22_15x.txt
+
+# B73 
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/B73_present_W22_ref.txt ori_B73_W22_ori.bam_fmt_10_bp.txt > cov_B73_present_W22_15x.txt
+
+
+### absent 
+# PH207  
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/PH207_absent_W22_ref.txt subsampled_PH207_W22v12_15x.bam_fmt_10_bp.txt > cov_PH207_absent_W22_15x.txt
+
+# Mo17
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/Mo17_absent_W22_ref.txt subsampled_Mo17_W22v12_15x.bam_fmt_10_bp.txt > cov_Mo17_absent_W22_15x.txt
+
+# B73 
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/B73_absent_W22_ref.txt ori_B73_W22_ori.bam_fmt_10_bp.txt > cov_B73_absent_W22_15x.txt
+
+
+
+############################################################ 30x ############################################################
+
+### Present 
+# PH207 
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/PH207_present_W22_ref.txt subsampled_PH207_W22v12_30x.bam_fmt_10_bp.txt > cov_PH207_present_W22_30x.txt
+# Mo17
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/Mo17_present_W22_ref.txt ori_Mo17_W22_ori.bam_fmt_10_bp.txt > cov_Mo17_present_W22_30x.txt
+
+### absent 
+# Mo17
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/Mo17_absent_W22_ref.txt ori_Mo17_W22_ori.bam_fmt_10_bp.txt > cov_Mo17_absent_W22_30x.txt
+# PH207 
+grep -Fwf ~/TE_variation/downsampling_priors/contrast_bed/PH207_absent_W22_ref.txt subsampled_PH207_W22v12_30x.bam_fmt_10_bp.txt > cov_PH207_absent_W22_30x.txt

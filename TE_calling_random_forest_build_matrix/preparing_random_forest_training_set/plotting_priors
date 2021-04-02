@@ -1,0 +1,287 @@
+# Note: this is set only filter present set with coverage one end at least >1. 
+# Should we consider them as all indivudal events? if there is TE, either side should have coverage
+
+library(tidyr)
+library(ggridges)
+library(ggplot2)
+library(dplyr)
+library(gridExtra)
+library(grid)
+library(ggplot2)
+library(lattice)
+
+##### 10x  preview 
+# reading coverage file 
+Prior_10x_present <- read.csv("~/Desktop/TE paper/Revision/present_downsampling_cov_10x_matrix_simply.txt", sep="\t",header = FALSE)
+Prior_10x_absent <- read.csv("~/Desktop/TE paper/Revision/absent_downsampling_cov_10x_matrix_simply.txt", sep="\t",header = FALSE)
+# filter_present set by coverage at least larger than 1 
+working_set_10x =  rbind(Prior_10x_present,Prior_10x_absent)
+
+df_10x_abs = working_set_10x %>% filter(V3== "absent") 
+abs_count <- as.data.frame(table(df_10x_abs$V2))
+colnames(abs_count)[2] <- "absent_count"
+
+df_10x_present = working_set_10x %>% filter(V3== "present") 
+pres_count <- as.data.frame(table(df_10x_present$V2))
+colnames(pres_count)[2] <- "present_count"
+
+count_joint <- left_join(abs_count,pres_count)
+count_joint$ratio_pres <- count_joint$`present_count`/(count_joint$`absent_count` + count_joint$`present_count`)
+count_joint$ratio_abs <- count_joint$`absent_count`/(count_joint$`absent_count` + count_joint$`present_count`)
+head(count_joint)
+
+count_joint%>% reshape2::melt(id.vars=c("Var1","absent_count","present_count")) %>% 
+  filter(as.numeric(Var1) < 100) %>% ggplot(aes(x=as.numeric(Var1),y=value,colours=variable)) +  geom_line(aes(color=variable)) + scale_x_continuous(name="coverage",breaks = seq(0, 100, by = 2))
+
+
+
+working_set_10x %>% filter(working_set_10x$V2 < 50) %>%
+  ggplot( aes(x=V2, fill=V3)) +
+  geom_histogram(alpha=0.4, position="identity") + scale_fill_manual(values=c("#69b3a2", "#404080")) + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 50, by = 1)) + theme_classic() + labs(title="10x coverage") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+##### 15x  preview 
+# reading coverage file 
+Prior_15x_present <- read.csv("~/Desktop/TE paper/Revision/present_downsampling_cov_15x_matrix_simply.txt", sep="\t",header = FALSE)
+Prior_15x_absent <- read.csv("~/Desktop/TE paper/Revision/absent_downsampling_cov_15x_matrix_simply.txt", sep="\t",header = FALSE)
+# filter_present set by coverage at least larger than 1 
+working_set_15x = rbind(Prior_15x_absent,Prior_15x_present)
+
+
+working_set_15x %>% filter(V2 < 100) %>%
+  ggplot( aes(x=V2, fill=V3)) +
+  geom_histogram(alpha=0.4, position="identity") + scale_fill_manual(values=c("#69b3a2", "#404080")) + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 100, by = 5)) + theme_classic() + labs(title="15x coverage") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
+  theme(text = element_text(size=20),
+        axis.text.x = element_text(angle=90, hjust=1)) 
+
+
+df_15x_abs = working_set_15x %>% filter(V3== "absent") 
+abs_count_15 <- as.data.frame(table(df_15x_abs$V2))
+colnames(abs_count_15)[2] <- "absent_count"
+
+df_15x_present = working_set_15x %>% filter(V3== "present") 
+pres_count_15 <- as.data.frame(table(df_15x_present$V2))
+colnames(pres_count_15)[2] <- "present_count"
+
+count_joint_15 <- left_join(abs_count_15,pres_count_15)
+count_joint_15$ratio_pres <- count_joint_15$`present_count`/(count_joint_15$`absent_count` + count_joint_15$`present_count`)
+count_joint_15$ratio_abs <- count_joint_15$`absent_count`/(count_joint_15$`absent_count` + count_joint_15$`present_count`)
+head(count_joint_15)
+
+prob_15 = count_joint_15%>% reshape2::melt(id.vars=c("Var1","absent_count","present_count")) %>% 
+  filter(as.numeric(Var1) < 100) %>% ggplot(aes(x=as.numeric(Var1),y=value,colours=variable)) +  geom_line(aes(color=variable)) + scale_x_continuous(name="coverage",breaks = seq(0, 100, by = 2))
+
+
+
+
+
+
+# 30x preview 
+# reading coverage file 
+Prior_30x_present <- read.csv("~/Desktop/TE paper/Revision/present_downsampling_cov_30x_matrix_simply.txt", sep="\t",header = FALSE)
+Prior_30x_absent <- read.csv("~/Desktop/TE paper/Revision/absent_downsampling_cov_30x_matrix_simply.txt", sep="\t",header = FALSE)
+# filter_present set by coverage at least larger than 1 
+working_set_30x = rbind(Prior_30x_absent,Prior_30x_present)
+
+working_set_30x %>% filter(V2 < 100) %>%
+  ggplot( aes(x=V2, fill=V3)) +
+  geom_histogram(alpha=0.4, position="identity") + scale_fill_manual(values=c("#69b3a2", "#404080")) + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 100, by = 5)) + theme_classic() + labs(title="30x coverage") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
+  theme(text = element_text(size=20),
+        axis.text.x = element_text(angle=90, hjust=1)) 
+
+
+df_30x_abs = working_set_30x %>% filter(V3== "absent") 
+abs_count_30 <- as.data.frame(table(df_30x_abs$V2))
+colnames(abs_count_30)[2] <- "absent_count"
+
+df_30x_present = working_set_30x %>% filter(V3== "present") 
+pres_count_30x <- as.data.frame(table(df_30x_present$V2))
+colnames(pres_count_30x)[2] <- "present_count"
+
+count_joint_30 <- left_join(abs_count_30,pres_count_30x)
+count_joint_30$ratio_pres <- count_joint_30$`present_count`/(count_joint_30$`absent_count` + count_joint_30$`present_count`)
+count_joint_30$ratio_abs <- count_joint_30$`absent_count`/(count_joint_30$`absent_count` + count_joint_30$`present_count`)
+head(count_joint_30)
+
+prob_30x = count_joint_30%>% reshape2::melt(id.vars=c("Var1","absent_count","present_count")) %>% 
+  filter(as.numeric(Var1) < 100) %>% ggplot(aes(x=as.numeric(Var1),y=value,colours=variable)) +  geom_line(aes(color=variable)) + scale_x_continuous(name="coverage",breaks = seq(0, 100, by = 2))
+
+
+
+grid.arrange(prob_15,prob_30x)
+
+
+count_joint_30 <- left_join(abs_count_30,pres_count_30x)
+count_joint_30$ratio_pres <- count_joint_30$`present_count`/(count_joint_30$`absent_count` + count_joint_30$`present_count`)
+count_joint_30$sample_size<- (count_joint_30$`absent_count` + count_joint_30$`present_count`)
+head(count_joint_30)
+
+
+response = cbind(count_joint_30$absent_count,count_joint_30$present_count )
+results = glm(response ~ count_joint_30$Var1, family = binomial)
+
+
+plot(count_joint_30$Var1,response)
+
+beta.select(list(p=0.84,x=0),list(p=0.72,x=5))
+
+data <- count_joint_30$absent_count
+
+lklh.exp<- function(x, theta) theta*exp(-theta*x)
+log.lklh.exp <- function(x, theta) {
+  -sum(log(theta)-theta*x)
+}
+
+result <- optim(par = 1, log.lklh.exp, x = x, method = "Brent", lower = 0, upper = 2)
+theta <- result$par
+theta
+curve(theta*exp(-theta*x), from=0, to=100)
+
+data<-data[!is.na(data)]
+library(MASS)
+fitdistr(data, "Exponential")
+
+eexp(data, ci=TRUE, conf = 0.9) 
+
+## all together 
+rbind(working_set_10x,working_set_15x,working_set_30x) %>% filter(V2 < 50) %>%
+  ggplot( aes(x=V2, fill=V3)) +
+  geom_histogram(alpha=0.4, position="identity") + scale_fill_manual(values=c("#69b3a2", "#404080")) + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 50, by = 1)) + theme_classic() + labs(title="10,15,30x coverage") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+
+
+
+
+
+
+
+
+######################FULL SET BELOW 
+##### 10x  preview 
+# reading coverage file 
+Prior_10x_present_full <- read.csv("~/Desktop/TE paper/Revision/present_downsampling_cov_10x_matrix.txt", sep="\t",header = FALSE)
+Prior_10x_absent_full <- read.csv("~/Desktop/TE paper/Revision/absent_downsampling_cov_10x_matrix.txt", sep="\t",header = FALSE)
+# filter_present set by coverage at least larger than 1 
+working_set_10x_full = Prior_10x_present_full %>% filter(V2>1) %>% rbind(Prior_10x_absent_full)
+
+table(working_set_10x_full$V7)
+
+
+##### 15x  preview 
+# reading coverage file 
+Prior_15x_present_full <- read.csv("~/Desktop/TE paper/Revision/present_downsampling_cov_15x_matrix.txt", sep="\t",header = FALSE)
+Prior_15x_absent_full <- read.csv("~/Desktop/TE paper/Revision/absent_downsampling_cov_15x_matrix.txt", sep="\t",header = FALSE)
+# filter_present set by coverage at least larger than 1 
+working_set_15x_full = Prior_15x_present_full %>% filter(V2>1) %>% rbind(Prior_15x_absent_full)
+
+
+# 30x preview 
+# reading coverage file 
+Prior_30x_present_full <- read.csv("~/Desktop/TE paper/Revision/present_downsampling_cov_30x_matrix.txt", sep="\t",header = FALSE)
+Prior_30x_absent_full <- read.csv("~/Desktop/TE paper/Revision/absent_downsampling_cov_30x_matrix.txt", sep="\t",header = FALSE)
+# filter_present set by coverage at least larger than 1 
+working_set_30x_full = Prior_30x_present_full %>% filter(V2>1) %>% rbind(Prior_30x_absent_full)
+
+## all together 
+final_set = rbind(working_set_10x_full,working_set_15x_full,working_set_30x_full)[,-c(5:6)] 
+
+#
+final_set %>% filter(V2 < 50) %>% filter (V7 == "absent" & V3== "start") %>% 
+  ggplot( aes(x=V2, fill=V4)) +
+  geom_histogram(alpha=0.4, position="identity") + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 50, by = 1)) + theme_classic() + labs(title="10,15,30x coverage") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+final_set %>% filter(V2 < 50) %>% filter (V7 == "absent" & V3== "start") %>% 
+  ggplot( aes(x=V2, fill=V4)) +
+  geom_histogram(alpha=0.4, position="identity") + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 50, by = 1)) + theme_classic() + labs(title="start, absent,10,15,30x coverage") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+final_set %>% filter(V2 < 50) %>% filter (V7 == "present" & V3== "start") %>% 
+  ggplot( aes(x=V2, fill=V4)) +
+  geom_histogram(alpha=0.4, position="identity") + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 50, by = 1)) + theme_classic() + labs(title="start, present,10,15,30x coverage") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+#############################
+
+# test remove TE call based on both end >1 
+
+Filtered_30x_present = Prior_30x_present_full %>% 
+  pivot_wider(names_from = V3, values_from = V2) %>% filter(start >1 & end >1) %>%
+  reshape2::melt(id.vars=c("V1","V4","V5","V6","V7")) 
+
+long_30x_filter <- Filtered_30x_present[,c(1,7,6,2,3,4,5)] 
+colnames(long_30x_filter)[2] <- "V2"
+colnames(long_30x_filter)[3] <- "V3"
+head(long_30x_filter)
+rbind(long_30x_filter,Prior_30x_absent_full)
+
+filter_final_set_30x = rbind(long_30x_filter,Prior_30x_absent_full)[,-c(5:6)] 
+
+filter_final_set_30x %>% filter(V2 < 50) %>%
+  ggplot( aes(x=V2, fill=V7)) +
+  geom_histogram(alpha=0.4, position="identity") + scale_fill_manual(values=c("#69b3a2", "#404080")) + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 50, by = 1)) + theme_classic() + labs(title="30x coverage pair filter") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+# 10x 
+
+Filtered_10x_present = Prior_10x_present_full %>% 
+  pivot_wider(names_from = V3, values_from = V2) %>% filter(start >1 & end >1) %>%
+  reshape2::melt(id.vars=c("V1","V4","V5","V6","V7")) 
+
+long_10x_filter <- Filtered_10x_present[,c(1,7,6,2,3,4,5)] 
+colnames(long_10x_filter)[2] <- "V2"
+colnames(long_10x_filter)[3] <- "V3"
+head(long_10x_filter)
+rbind(long_10x_filter,Prior_10x_absent_full)
+
+filter_final_set_10x = rbind(long_10x_filter,Prior_10x_absent_full)[,-c(5:6)] 
+
+filter_final_set_10x %>% filter(V2 < 50) %>%
+  ggplot( aes(x=V2, fill=V7)) +
+  geom_histogram(alpha=0.4, position="identity") + scale_fill_manual(values=c("#69b3a2", "#404080")) + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 50, by = 1)) + theme_classic() + labs(title="10x coverage pair filter") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+## 15x 
+
+Filtered_15x_present = Prior_15x_present_full %>% 
+  pivot_wider(names_from = V3, values_from = V2) %>% filter(start >1 & end >1) %>%
+  reshape2::melt(id.vars=c("V1","V4","V5","V6","V7")) 
+
+long_15x_filter <- Filtered_15x_present[,c(1,7,6,2,3,4,5)] 
+colnames(long_15x_filter)[2] <- "V2"
+colnames(long_15x_filter)[3] <- "V3"
+head(long_15x_filter)
+rbind(long_15x_filter,Prior_15x_absent_full)
+
+filter_final_set_15x = rbind(long_15x_filter,Prior_15x_absent_full)[,-c(5:6)] 
+
+filter_final_set_15x %>% filter(V2 < 50) %>%
+  ggplot( aes(x=V2, fill=V7)) +
+  geom_histogram(alpha=0.4, position="identity") + scale_fill_manual(values=c("#69b3a2", "#404080")) + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 50, by = 1)) + theme_classic() + labs(title="15x coverage pair filter") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+
+## all coverage 
+
+rbind(filter_final_set_10x,filter_final_set_15x,filter_final_set_30x) %>% filter(V2 < 50) %>%
+  ggplot( aes(x=V2, fill=V7)) +
+  geom_histogram(alpha=0.4, position="identity") + scale_fill_manual(values=c("#69b3a2", "#404080")) + 
+  scale_x_continuous(name="coverage",breaks = seq(0, 50, by = 1)) + theme_classic() + labs(title="10,15,30x coverage pair filter") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+

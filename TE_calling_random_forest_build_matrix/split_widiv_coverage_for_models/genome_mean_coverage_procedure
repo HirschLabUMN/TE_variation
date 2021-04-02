@@ -1,0 +1,44 @@
+# getting a list of genomes that has coverage information 
+cut -f 1 refB73v4_mean_cov_allbams.txt | sort > ref_B73_mapping_list.txt
+cut -f 1 refMo17_mean_cov_allbams.txt | sort > ref_Mo17_mapping_list.txt
+cut -f 1 refPH207_mean_cov_allbams.txt | sort > ref_PH207_mapping_list.txt
+cut -f 1 refW22v12_mean_cov_allbams.txt | sort > ref_W22_mapping_list.txt
+
+# 509 genome passed the SNP QC
+widiv_509_sample_id.txt
+
+# finding genotype that failed to pass the QC in dir = ~/TE_variation/genome_mean_coverage
+# B73 
+comm -23 <(sort ref_B73_mapping_list.txt) <(sort widiv_509_sample_id.txt)
+
+# the names are 
+# CR1HT
+# DK3IIH6
+# PHG83
+
+# Mo17 
+comm -23 <(sort ref_Mo17_mapping_list.txt) <(sort widiv_509_sample_id.txt)
+
+# the names are 
+# CR1HT
+# DK3IIH6
+# PHG83
+
+# PH207 
+comm -23 <(sort ref_PH207_mapping_list.txt) <(sort widiv_509_sample_id.txt)
+
+# the names are 
+# PHG83
+
+# W22 
+comm -23 <(sort ref_W22_mapping_list.txt) <(sort widiv_509_sample_id.txt)
+
+# the names are 
+# PHG83
+
+# remove coverage information for the three lines above 
+for i in *mean_cov_allbams.txt; do
+  egrep -v 'CR1HT|DK3IIH6|PHG83' "$i" > "$i"_509.txt
+done 
+
+### download mean coverage information for plotting. 
